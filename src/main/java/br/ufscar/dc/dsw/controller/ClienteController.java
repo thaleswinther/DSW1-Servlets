@@ -143,37 +143,12 @@ public class ClienteController extends HttpServlet {
     private void atualize(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            String CPF = request.getParameter("CPF");
+            
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");
             String nome = request.getParameter("nome");
             String papel = request.getParameter("papel");
-            Cliente clienteSelecionado = (Cliente) request.getSession().getAttribute("clienteEdicao");
-
-            if (clienteSelecionado != null) {
-                Usuario usuarioSelecionado = daoUsuario.get(clienteSelecionado.getId());
-                if (usuarioSelecionado != null) {
-                    // Verificar se o email já existe
-                    if (daoUsuario.getbyEmail(email) != null
-                            && !daoUsuario.getbyEmail(email).getEmail().equals(usuarioSelecionado.getEmail())) {
-                        String mensagemErro = "O email já está em uso.";
-                        request.setAttribute("mensagemErro", mensagemErro);
-                        apresentaFormEdicao(request, response);
-
-                    // Verificar se o CPF já existe
-                    if (dao.get(CPF) != null
-                            && !dao.get(CPF).getCPF().equals(clienteSelecionado.getCPF())) {
-                        mensagemErro = "O CPF já está em uso.";
-                        request.setAttribute("mensagemErro", mensagemErro);
-                        apresentaFormEdicao(request, response);
-                        //RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/cliente/formulario.jsp");
-                        //dispatcher.forward(request, response);
-                        //return;
-                    }
-                }
-
-            }
-            
+        
             Usuario usuario = daoUsuario.get(Long.parseLong(request.getParameter("id")));
 
             usuario.setEmail(email);
@@ -182,6 +157,7 @@ public class ClienteController extends HttpServlet {
             usuario.setPapel(papel);
             daoUsuario.update(usuario);
 
+            String cpf = request.getParameter("CPF");
             String telefone = request.getParameter("telefone");
             String sexo = request.getParameter("sexo");
 
