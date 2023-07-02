@@ -8,7 +8,7 @@
 <table border="1">
 	<caption>
    		<c:choose>
-   			<c:when test="${cliente!= null}">
+   			<c:when test="${cliente != null}">
                                Edição
                            </c:when>
    			<c:otherwise>

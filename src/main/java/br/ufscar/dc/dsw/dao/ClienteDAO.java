@@ -152,7 +152,7 @@ public class ClienteDAO  extends GenericDAO {
 
      public Cliente get(Long id) {
         Cliente cliente = null;
-        String sql = "SELECT * from Cliente c, Usuario u where c.id = ? and c.id_usuario = u.id";
+        String sql = "SELECT * FROM Cliente INNER JOIN Usuario ON Cliente.id_usuario = Usuario.id WHERE Cliente.id_usuario = ?";
      ;
 
         try {
