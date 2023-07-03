@@ -40,7 +40,7 @@ public class LocadoraController extends HttpServlet {
         System.out.println("PASSEI POR: LocadoraController"); 
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
     	Erro erros = new Erro();    
-        if (usuario == null) {
+        if (usuario == null ) {
     		response.sendRedirect(request.getContextPath());
     	} else if (usuario.getPapel().equals("ADMIN")) {
             String action = request.getPathInfo();
@@ -83,6 +83,7 @@ public class LocadoraController extends HttpServlet {
     private void lista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Locadora> listaLocadoras = dao.getAll();
         request.setAttribute("listaLocadoras", listaLocadoras);
+        request.getSession().setAttribute("listaLocadoras", listaLocadoras);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/locadora/lista.jsp");
         dispatcher.forward(request, response);
     }

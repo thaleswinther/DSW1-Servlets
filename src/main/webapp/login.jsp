@@ -38,5 +38,24 @@
                 </tr>
             </table>
         </form>
+
+        <div align="center">
+            <table border="1">
+                <caption>Lista de Locadoras</caption>
+                <tr>
+                    <th>Nome</th>
+                    <th>CNPJ</th>
+                    <th>Cidade</th>
+                </tr>
+                <c:forEach var="locadora" items="${sessionScope.listaLocadoras}">
+                    <tr>
+                        <td>${locadora.nome}</td>
+                        <td>${locadora.CNPJ}</td>
+                        <td>${locadora.cidade}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+
     </body>
 </html>
