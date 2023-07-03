@@ -7,30 +7,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<<<<<<< HEAD
         <title>Locação de Bicicletas</title>
-=======
-        <title>Página do Cliente</title>
->>>>>>> 1a43c6642b4fd0dd9c9469e396b32e1a134470db
     </head>
     <body>
-        <h1>Página do Cliente</h1>
+        <h1>Página da Locadora</h1>
         <p>Olá ${sessionScope.usuarioLogado.nome}</p>
-        <a href="locacoes">Cadastrar Locação</a>
         <div align="center">
             <table border="1">
                 <caption>Lista de Locações</caption>
                 <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>CNPJ</th>
-                    <th>Data e hora</th>
+                    <th>Nome do Cliente</th>
+                    <th>CPF do Cliente</th>
+                    <th>Nome do Locadora</th>
+                    <th>CNPJ da Locadora</th>
+                    <th>Data e hora da Locação</th>
                 </tr>
                 <c:forEach var="locacao" items="${sessionScope.listaLocacoes}">
-                    <c:if test="${locacao.cliente.email eq sessionScope.usuarioLogado.email}">
+                    <c:if test="${locacao.locadora.email eq sessionScope.usuarioLogado.email}">
                         <tr>
                             <td>${locacao.cliente.nome}</td>
                             <td>${locacao.cliente.CPF}</td>
+                            <td>${locacao.locadora.nome}</td>
                             <td>${locacao.locadora.CNPJ}</td>
                             <td>${locacao.dataHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))}</td>
                         </tr>

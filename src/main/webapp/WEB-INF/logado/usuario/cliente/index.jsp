@@ -8,7 +8,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Página do Cliente</title>
+        <title>Locação de Bicicletas</title>
     </head>
     <body>
         <h1>Página do Cliente</h1>

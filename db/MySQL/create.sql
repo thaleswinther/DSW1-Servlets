@@ -46,12 +46,12 @@ CREATE TABLE Locacao (
 -- Inserindo dados
 
 -- Inserções na tabela Usuario
-INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario1@gmail.com', 'usuario1', 'Usuario 1', 'Cliente');
-INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario2@gmail.com', 'usuario2', 'Usuario 2', 'Cliente');
-INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario3@gmail.com', 'usuario3', 'Usuario 3', 'Locadora');
-INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario4@gmail.com', 'usuario4', 'Usuario 4', 'Locadora');
+INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario1@gmail.com', 'usuario1', 'Cliente 1', 'Cliente');
+INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario2@gmail.com', 'usuario2', 'Cliente 2', 'Cliente');
+INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario3@gmail.com', 'usuario3', 'Locadora 1', 'Locadora');
+INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario4@gmail.com', 'usuario4', 'Locadora 2', 'Locadora');
 INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario5@gmail.com', 'usuario5', 'Usuario 5', 'ADMIN');
-INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario6@gmail.com', 'usuario6', 'Usuario 6', 'Locadora');
+INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario6@gmail.com', 'usuario6', 'Locadora 3', 'Locadora');
 
 -- Inserções na tabela Cliente
 INSERT INTO Cliente (id_usuario, CPF, telefone, sexo, data_nascimento) VALUES (1, '00000000001', '111111111', 'Masculino', '1990-01-01');
