@@ -2,8 +2,10 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
 <!DOCTYPE html>
 <html>
+    <fmt:bundle basename="messages"></fmt:bundle>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Autenticação de Usuário</title>
@@ -39,29 +41,6 @@
             </table>
         </form>
 
-        <!-- <div align="center">
-            <table border="1">
-                <caption>Lista de Locadoras</caption>
-                <tr>
-                    <th>Nome</th>
-                    <th>CNPJ</th>
-                    <th>Cidade</th>
-                </tr>
-                <c:forEach var="locadora" items="${sessionScope.listaLocadoras}">
-                    <tr>
-                        <td>${locadora.nome}</td>
-                        <td>${locadora.CNPJ}</td>
-                        <td>${locadora.cidade}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </div> -->
-
-        <!-- <<script type="text/javascript">
-            document.addEventListener("DOMContentLoaded", function() {
-                document.getElementById("formLista").submit();
-            });
-        </script> -->
 
         <div align="center" align="center" style="margin-top: 50px;">
             <form id="formLista" method="post" action="index.jsp">
