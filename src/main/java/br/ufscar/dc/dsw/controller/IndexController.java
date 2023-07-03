@@ -18,8 +18,8 @@ import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.domain.Locacao;
 import br.ufscar.dc.dsw.util.Erro;
 
-import java.util.ArrayList;
-import java.nio.charset.StandardCharsets;
+//import java.util.ArrayList;
+//import java.nio.charset.StandardCharsets;
 
 @WebServlet(name = "Index", urlPatterns = { "/index.jsp", "/logout.jsp" })
 public class IndexController extends HttpServlet {
@@ -75,6 +75,7 @@ public class IndexController extends HttpServlet {
 		String URL = "/login.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(URL);
 		rd.forward(request, response);
+
 		
 	}
 }

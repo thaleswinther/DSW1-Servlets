@@ -32,7 +32,7 @@
                     <td><input type="password" name="senha" /></td>
                 </tr>
                 <tr>
-                    <td colspan="2"> 
+                    <td colspan="2">
                         <input type="submit" name="bOK" value="Entrar"/>
                     </td>
                 </tr>
@@ -57,5 +57,35 @@
             </table>
         </div>
 
+        <div align="center" align="center" style="margin-top: 50px;">
+            <form method="post" action="index.jsp">
+                <label for="cidade">Filtrar por cidade:</label>
+            <select name="cidade" id="cidade">
+                <option value="">Todas as cidades</option>
+                <c:forEach var="locadora" items="${sessionScope.listaLocadoras}">
+                    <option value="${locadora.cidade}">${locadora.cidade}</option>
+                </c:forEach>
+            </select>
+
+                <input type="submit" name="bFiltrar" value="Filtrar" />
+            </form>
+        </div>
+        <div align="center" style="margin-top: 10px;">
+            <table border="1">
+                <caption>Lista de Locadoras Filtradas por Cidade</caption>
+                <tr>
+                    <th>Nome</th>
+                    <th>CNPJ</th>
+                    <th>Cidade</th>
+                </tr>
+                <c:forEach var="locadoraFiltrada" items="${sessionScope.listaLocadorasFiltradas}">
+                    <tr>
+                        <td>${locadoraFiltrada.nome}</td>
+                        <td>${locadoraFiltrada.CNPJ}</td>
+                        <td>${locadoraFiltrada.cidade}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
     </body>
 </html>

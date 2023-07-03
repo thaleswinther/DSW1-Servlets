@@ -1,5 +1,7 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page isELIgnored="false"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 
 <!DOCTYPE html>
 <html>
@@ -15,15 +17,17 @@
             <table border="1">
                 <caption>Lista de Locações</caption>
                 <tr>
+                    <th>Nome</th>
                     <th>CPF</th>
                     <th>CNPJ</th>
                     <th>Data e hora</th>
                 </tr>
                 <c:forEach var="locacao" items="${sessionScope.listaLocacoes}">
                     <tr>
+                        <td>${locacao.cliente.nome}</td>
                         <td>${locacao.cliente.CPF}</td>
                         <td>${locacao.locadora.CNPJ}</td>
-                        <td>${locacao.DataHora}</td>
+                        <td>${locacao.dataHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))}</td>
                     </tr>
                 </c:forEach>
             </table>

@@ -51,7 +51,9 @@ public class LocacaoDAO extends GenericDAO {
                 String CNPJ = resultSet.getString("locadora_CNPJ");
                 LocalDateTime data_hora = resultSet.getTimestamp("data_hora").toLocalDateTime();
                 Locacao locacao = new Locacao(new ClienteDAO().get(CPF), new LocadoraDAO().get(CNPJ), data_hora);
+                System.out.println(locacao.getCliente().getCPF());
                 listaLocacoes.add(locacao); 
+        
             }
 
             resultSet.close();
