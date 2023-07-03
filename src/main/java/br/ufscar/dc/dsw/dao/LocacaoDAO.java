@@ -39,7 +39,7 @@ public class LocacaoDAO extends GenericDAO {
      public List<Locacao> getAll() {
         List<Locacao> listaLocacoes = new ArrayList<>();
         
-        String sql = "SELECT * FROM locacao;";
+        String sql = "SELECT * FROM Locacao;";
 
         try {
             Connection conn = this.getConnection();
@@ -47,8 +47,8 @@ public class LocacaoDAO extends GenericDAO {
 ;
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-                String CPF = resultSet.getString("CPF");
-                String CNPJ = resultSet.getString("CNPJ");
+                String CPF = resultSet.getString("cliente_CPF");
+                String CNPJ = resultSet.getString("locadora_CNPJ");
                 LocalDateTime data_hora = resultSet.getTimestamp("data_hora").toLocalDateTime();
                 Locacao locacao = new Locacao(new ClienteDAO().get(CPF), new LocadoraDAO().get(CNPJ), data_hora);
                 listaLocacoes.add(locacao); 
@@ -65,7 +65,7 @@ public class LocacaoDAO extends GenericDAO {
 
     public void delete(Locacao locacao) {
         
-        String sql = "DELETE FROM locacao WHERE cliente_CPF = ?, locadora_CNPJ = ?, data_hora = ?";
+        String sql = "DELETE FROM Locacao WHERE cliente_CPF = ?, locadora_CNPJ = ?, data_hora = ?";
 
         try {
             Connection conn = this.getConnection();
@@ -86,7 +86,7 @@ public class LocacaoDAO extends GenericDAO {
 
     public Locacao get(String CPF, String CNPJ, LocalDateTime data_hora) {
         Locacao locacao = null;   
-        String sql = "SELECT * FROM locacao WHERE cliente_CPF = ? AND locadora_CNPJ = ? AND data_hora = ?;";
+        String sql = "SELECT * FROM Locacao WHERE cliente_CPF = ? AND locadora_CNPJ = ? AND data_hora = ?;";
 
         try {
             Connection conn = this.getConnection();

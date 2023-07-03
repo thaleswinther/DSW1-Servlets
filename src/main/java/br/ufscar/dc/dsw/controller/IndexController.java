@@ -12,9 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.ufscar.dc.dsw.dao.LocadoraDAO;
 import br.ufscar.dc.dsw.dao.UsuarioDAO;
+import br.ufscar.dc.dsw.dao.LocacaoDAO;
 import br.ufscar.dc.dsw.domain.Locadora;
 import br.ufscar.dc.dsw.domain.Usuario;
+import br.ufscar.dc.dsw.domain.Locacao;
 import br.ufscar.dc.dsw.util.Erro;
+
+import java.util.ArrayList;
+import java.nio.charset.StandardCharsets;
 
 @WebServlet(name = "Index", urlPatterns = { "/index.jsp", "/logout.jsp" })
 public class IndexController extends HttpServlet {
@@ -47,7 +52,9 @@ public class IndexController extends HttpServlet {
 						if (usuario.getPapel().equals("ADMIN")) {
 							response.sendRedirect("admin/");
 						} else {
-							response.sendRedirect("usuario/");
+							if (usuario.getPapel().equals("Cliente") || usuario.getPapel().equals("Locadora") ) {
+								response.sendRedirect("usuario/");
+							} 			
 						}
 						return;
 					} else {
@@ -62,9 +69,12 @@ public class IndexController extends HttpServlet {
 
 		List<Locadora> listaLocadoras = new LocadoraDAO().getAll();
 		request.getSession().setAttribute("listaLocadoras", listaLocadoras);
+		List<Locacao> listaLocacoes = new LocacaoDAO().getAll();
+        request.getSession().setAttribute("listaLocacoes", listaLocacoes);
 		request.setAttribute("mensagens", erros);
 		String URL = "/login.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(URL);
 		rd.forward(request, response);
+		
 	}
 }

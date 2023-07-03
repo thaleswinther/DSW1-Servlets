@@ -28,16 +28,21 @@ public class UsuarioController extends HttpServlet {
     	Erro erros = new Erro();    	
     	if (usuario == null) {
     		response.sendRedirect(request.getContextPath());
-    	} else if (usuario.getPapel().equals("USER")) {
-    		RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/usuario/index.jsp");
+    	} else if (usuario.getPapel().equals("Cliente")) {
+    		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/logado/usuario/cliente/index.jsp");
             dispatcher.forward(request, response);
-    	} else {
+    	} else if (usuario.getPapel().equals("Locadora")) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/logado/usuario/locadora/index.jsp");
+            dispatcher.forward(request, response);
+		} else {
     		erros.add("Acesso não autorizado!");
-    		erros.add("Apenas Papel [USER] tem acesso a essa página");
+    		erros.add("Papel não encontrado: papel deve ser Cliente, Locadora ou ADMIN");
     		request.setAttribute("mensagens", erros);
     		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
     		rd.forward(request, response);
-    	}    	
+    	}   
+		
+		 	
     }
 
     
