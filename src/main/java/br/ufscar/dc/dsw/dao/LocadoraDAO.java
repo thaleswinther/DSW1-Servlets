@@ -90,7 +90,7 @@ public class LocadoraDAO extends GenericDAO {
 
     public void update(Locadora locadora) {
 
-        String sql = "UPDATE Locadora SET CNPJ = ?, cidade = ? WHERE id = ?";
+        String sql = "UPDATE Locadora SET CNPJ = ?, cidade = ? WHERE id_usuario = ?";
 
         try {
             Connection conn = this.getConnection();
@@ -143,7 +143,7 @@ public class LocadoraDAO extends GenericDAO {
 
     public Locadora get(Long id) {
         Locadora locadora = null;   
-        String sql = "SELECT * from locadora l, Usuario u where l.id = ? and l.id_usuario = u.id";
+        String sql = "SELECT * FROM Locadora INNER JOIN Usuario ON Locadora.id_usuario = Usuario.id WHERE Locadora.id_usuario = ?";
 
         try {
             Connection conn = this.getConnection();

@@ -4,19 +4,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>Livraria Virtual</title>
+<title>Gerenciamento de Locadoras</title>
 </head>
 
 <body>
+    <% System.out.println("PASSEI POR: WEB-INF/locadora/formulario.jsp"); %> 
 	<div align="center">
-		<h1>Gerenciamento de Editoras</h1>
+		<h1>Gerenciamento de Locadoras</h1>
 		<h2>
-			<a href="lista">Lista de Editoras</a>
+			<a href="lista">Lista de Locadoras</a>
 		</h2>
 	</div>
 	<div align="center">
 		<c:choose>
-			<c:when test="${editora != null}">
+			<c:when test="${locadora != null}">
 				<form action="atualizacao" method="post">
 					<%@include file="campos.jsp"%>
 				</form>

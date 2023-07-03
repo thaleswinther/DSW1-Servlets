@@ -101,7 +101,6 @@ public class ClienteController extends HttpServlet {
         Long id = Long.parseLong(request.getParameter("id"));
         Cliente cliente = dao.get(id);
         request.setAttribute("cliente", cliente);
-        request.getSession().setAttribute("clienteEdicao", cliente);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/cliente/formulario.jsp");
         dispatcher.forward(request, response);
     }

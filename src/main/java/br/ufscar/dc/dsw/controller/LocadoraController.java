@@ -26,6 +26,7 @@ public class LocadoraController extends HttpServlet {
     @Override
     public void init() {
         dao = new LocadoraDAO();
+        daoUsuario = new UsuarioDAO();
     }
 
     @Override
@@ -93,8 +94,8 @@ public class LocadoraController extends HttpServlet {
     }
 
     private void apresentaFormEdicao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String CNPJ = request.getParameter("CNPJ");
-        Locadora locadora = dao.get(CNPJ);
+        Long id = Long.parseLong(request.getParameter("id"));
+        Locadora locadora = dao.get(id);
         request.setAttribute("locadora", locadora);
         RequestDispatcher dispatcher = request.getRequestDispatcher("//WEB-INF/locadora/formulario.jsp");
         dispatcher.forward(request, response);
