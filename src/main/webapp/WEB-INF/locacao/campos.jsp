@@ -10,6 +10,17 @@
     <c:if test="${locadora != null}">
 		<input type="hidden" name="id" value="${locacao.cliente.usuario.id}" />
 	</c:if>
+
+    <tr>
+		<td><label for="locadora">Locadora</label></td>
+		<td><select name="locadora">
+				<c:forEach items="${locadoras}" var="locadora">
+					<option value="${locadora.key}"
+						${locacao.locadora.usuario.nome==locadora.value ? 'selected' : '' }>
+						${locadora.value}</option>
+				</c:forEach>
+		</select></td>
+	</tr>
  	
    	<tr>
    		<td><label for="email">Email</label></td>
