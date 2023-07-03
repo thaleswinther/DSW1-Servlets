@@ -150,12 +150,8 @@ public class ClienteController extends HttpServlet {
             String nome = request.getParameter("nome");
             String papel = request.getParameter("papel");
             Long id = Long.parseLong(request.getParameter("id"));
-            Usuario usuario = daoUsuario.get(id);
-
-            usuario.setEmail(email);
-            usuario.setSenha(senha);
-            usuario.setNome(nome);
-            usuario.setPapel(papel);
+            Usuario usuario = new Usuario(id, email, senha, nome, papel);
+            
             daoUsuario.update(usuario);
 
             String cpf = request.getParameter("CPF");
@@ -177,7 +173,6 @@ public class ClienteController extends HttpServlet {
             cliente.setTelefone(telefone);
             cliente.setSexo(sexo);
             cliente.setDataNascimento(data_nascimento);
-
             dao.update(cliente);
             response.sendRedirect("lista");
         } catch (RuntimeException | IOException e) {

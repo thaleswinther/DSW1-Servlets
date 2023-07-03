@@ -10,8 +10,9 @@ import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.util.Erro;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,10 +28,12 @@ public class LocacaoController extends HttpServlet {
 
     private static final long serialVersionUID = 1L; 
     private LocacaoDAO dao;
+    private ClienteDAO daoCliente;
 
     @Override
     public void init() {
         dao = new LocacaoDAO();
+        daoCliente = new ClienteDAO();
     }
 
     @Override
@@ -99,19 +102,20 @@ public class LocacaoController extends HttpServlet {
 
 
     private void insere(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         request.setCharacterEncoding("UTF-8");
         
-       LocalDateTime data_hora = LocalDateTime.parse(request.getParameter("data_hora"), DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
-
-       String CPF = request.getParameter("CPF");
-       Cliente cliente = new ClienteDAO().get(CPF);
-
-       String CNPJ = request.getParameter("CNPJ");
-       Locadora locadora = new LocadoraDAO().get(CNPJ);
-
-       Locacao locacao = new Locacao(cliente, locadora, data_hora);
-       dao.insert(locacao);
-       response.sendRedirect("lista");
+        LocalDate data = LocalDate.parse(request.getParameter("data"));
+        int hora = Integer.parseInt(request.getParameter("hora"));
+        LocalDateTime data_hora = LocalDateTime.of(data, LocalTime.of(hora, 0));
+        Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
+        Cliente cliente = daoCliente.get(usuario.getId());
+        String CNPJ = request.getParameter("locadora_selecionada"); 
+        Locadora locadora = new LocadoraDAO().get(CNPJ);
+        
+        Locacao locacao = new Locacao(cliente, locadora, data_hora);
+        dao.insert(locacao);
+        response.sendRedirect("lista");
     }
 
 }

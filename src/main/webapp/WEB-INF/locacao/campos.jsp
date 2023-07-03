@@ -7,20 +7,29 @@
 <% System.out.println("PASSEI POR: WEB-INF/locacao/campos.jsp"); %> 
 
 <table border="1">
+    <caption>
+        <c:choose>
+            <c:when test="${locadora!= null}">
+                            Cadastro
+            </c:when>
+        </c:choose>
+ </caption>
     <c:if test="${locadora != null}">
-		<input type="hidden" name="id" value="${locacao.cliente.usuario.id}" />
+		<input type="hidden" name="id" value="${locacao.cliente.id}" />
 	</c:if>
 
     <tr>
 		<td><label for="locadora">Locadora</label></td>
-		<td><select name="locadora">
+		<td><select name="locadora_selecionada">
 				<c:forEach items="${locadoras}" var="locadora">
 					<option value="${locadora.key}"
-						${locacao.locadora.usuario.nome==locadora.value ? 'selected' : '' }>
+						${locacao.locadora.nome==locadora.value ? 'selected' : '' }>
 						${locadora.value}</option>
 				</c:forEach>
 		</select></td>
-	</tr>
+	</tr> 
+
+    
  	
     <tr>
         <td><label for="data">Data</label></td>

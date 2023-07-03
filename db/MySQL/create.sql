@@ -51,6 +51,7 @@ INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario2@gmail.com', 'u
 INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario3@gmail.com', 'usuario3', 'Usuario 3', 'Locadora');
 INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario4@gmail.com', 'usuario4', 'Usuario 4', 'Locadora');
 INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario5@gmail.com', 'usuario5', 'Usuario 5', 'ADMIN');
+INSERT INTO Usuario (email, senha, nome, papel) VALUES ('usuario6@gmail.com', 'usuario6', 'Usuario 6', 'Locadora');
 
 -- Inserções na tabela Cliente
 INSERT INTO Cliente (id_usuario, CPF, telefone, sexo, data_nascimento) VALUES (1, '00000000001', '111111111', 'Masculino', '1990-01-01');
@@ -59,7 +60,7 @@ INSERT INTO Cliente (id_usuario, CPF, telefone, sexo, data_nascimento) VALUES (2
 -- Inserções na tabela Locadora
 INSERT INTO Locadora (id_usuario, CNPJ, cidade) VALUES (3, '00000000000001', 'São Carlos');
 INSERT INTO Locadora (id_usuario, CNPJ, cidade) VALUES (4, '00000000000002', 'São Paulo');
-INSERT INTO Locadora (id_usuario, CNPJ, cidade) VALUES (3, '00000000000005', 'Bauru');
+INSERT INTO Locadora (id_usuario, CNPJ, cidade) VALUES (6, '00000000000005', 'Bauru');
 
 
 -- Inserções na tabela Locacao
