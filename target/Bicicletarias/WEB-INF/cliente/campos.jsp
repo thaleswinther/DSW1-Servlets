@@ -3,7 +3,7 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<% System.out.println("PASSEI POR: WEB-INF/cliente/campos.jsp"); %> 
+<% System.out.println("PASSEI POR: WEB-INF/cliente/campos.jsp"); %>
 
 <table border="1">
 	<caption>
@@ -26,7 +26,7 @@
    	</tr>
    	<tr>
    		<td><label for="senha">Senha</label></td>
-   		<td><input type="text" id="senha" name="senha" size="45" required
+   		<td><input type="password" id="senha" name="senha" size="45" required
    			value="${cliente.senha}" /></td>
    	</tr>
    	<tr>
@@ -40,10 +40,19 @@
             value="${cliente.CPF}" /></td>
     </tr>
     <tr>
-        <td><label for="sexo">Sexo</label></td>
-        <td><input type="text" id="sexo" name="sexo" size="45" required
-            value="${cliente.sexo}" /></td>
-    </tr>
+		<td><label for="sexo">Sexo</label></td>
+		<td>
+			<input type="radio" id="masculino" name="sexo" value="Masculino" ${cliente.sexo == 'Masculino' ? 'checked' : ''} required>
+			<label for="masculino">Masculino</label>
+			<br>
+			<input type="radio" id="feminino" name="sexo" value="Feminino" ${cliente.sexo == 'Feminino' ? 'checked' : ''} required>
+			<label for="feminino">Feminino</label>
+			<br>
+			<input type="radio" id="outro" name="sexo" value="Outro" ${cliente.sexo == 'Outro' ? 'checked' : ''} required>
+			<label for="outro">Outro</label>
+		</td>
+	</tr>
+
     <tr>
         <td><label for="telefone">Telefone</label></td>
         <td><input type="text" id="telefone" name="telefone" size="45" required
@@ -55,10 +64,17 @@
 	</tr>
     <tr>
 		<td><label for="papel">Papel</label></td>
-		<td><input type="text" id="papel" name="papel" required value="${cliente.papel}" /></td>
+		<td>
+			<input type="radio" id="cliente" name="papel" value="Cliente" ${cliente.papel == 'Cliente' ? 'checked' : ''} required>
+			<label for="cliente">Cliente</label>
+			<br>
+			<input type="radio" id="admin" name="papel" value="Admin" ${cliente.papel == 'Admin' ? 'checked' : ''} required>
+			<label for="admin">ADMIN</label>
+		</td>
 	</tr>
-    
-   	
+
+
+
    	<tr>
    		<td colspan="2" align="center"><input type="submit" value="Salva" /></td>
    	</tr>

@@ -12,11 +12,11 @@ import br.ufscar.dc.dsw.domain.Usuario;
 
 public class UsuarioDAO extends GenericDAO {
 
-    public void insert(Usuario usuario) {    
+    public void insert(Usuario usuario) {
         String sql = "INSERT INTO Usuario (email, senha, nome, papel) VALUES (?, ?, ?, ?)";
         try {
             Connection conn = this.getConnection();
-            PreparedStatement statement = conn.prepareStatement(sql);;    
+            PreparedStatement statement = conn.prepareStatement(sql);;
             statement = conn.prepareStatement(sql);
             statement.setString(1, usuario.getEmail());
             statement.setString(2, usuario.getSenha());
@@ -30,7 +30,7 @@ public class UsuarioDAO extends GenericDAO {
         }
     }
 
-    public List<Usuario> getAll() {   
+    public List<Usuario> getAll() {
         List<Usuario> listaUsuarios = new ArrayList<>();
         String sql = "SELECT * from Usuario";
         try {
@@ -56,12 +56,12 @@ public class UsuarioDAO extends GenericDAO {
     }
 
      public Usuario get(Long id) {
-        Usuario usuario = null;   
+        Usuario usuario = null;
         String sql = "SELECT * FROM Usuario WHERE id = ?";
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
-            
+
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -69,7 +69,6 @@ public class UsuarioDAO extends GenericDAO {
                 String senha = resultSet.getString("senha");
                 String nome = resultSet.getString("nome");
                 String papel = resultSet.getString("papel");
-                System.out.println("CHEGUEI AQUI");
                 usuario = new Usuario(id, email, senha, nome, papel);
             }
 
@@ -100,7 +99,7 @@ public class UsuarioDAO extends GenericDAO {
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
-            
+
             statement.setString(1, usuario.getEmail());
             statement.setString(2, usuario.getSenha());
             statement.setString(3, usuario.getNome());
@@ -113,7 +112,7 @@ public class UsuarioDAO extends GenericDAO {
             throw new RuntimeException(e);
         }
     }
-   
+
 
     public Usuario getbyEmail(String email) {
         Usuario usuario = null;

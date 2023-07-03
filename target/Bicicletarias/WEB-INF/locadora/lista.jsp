@@ -5,11 +5,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>Livraria Virtual</title>
+<title>Locação de Bicicletas</title>
 </head>
 <body>
 
-    <% System.out.println("PASSEI POR: WEB-INF/locadora/lista.jsp"); %> 
+    <% System.out.println("PASSEI POR: WEB-INF/locadora/lista.jsp"); %>
 	<%
 		String contextPath = request.getContextPath().replace("/", "");
 	%>
@@ -28,7 +28,6 @@
 				<th>CNPJ</th>
 				<th>Cidade</th>
                 <th>Email</th>
-                <th>Senha</th>
                 <th>Nome</th>
                 <th>Papel</th>
                 <th>Ações</th>
@@ -38,7 +37,6 @@
 					<td>${locadora.CNPJ}</td>
 					<td>${locadora.cidade}</td>
 					<td>${locadora.email}</td>
-					<td>${locadora.senha}</td>
                     <td>${locadora.nome}</td>
                     <td>${locadora.papel}</td>
 					<td><a href="/<%= contextPath%>/admin/locadoras/edicao?id=${locadora.id}">Edição</a>

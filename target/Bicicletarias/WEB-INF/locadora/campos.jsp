@@ -3,7 +3,7 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<% System.out.println("PASSEI POR: WEB-INF/locadora/campos.jsp"); %> 
+<% System.out.println("PASSEI POR: WEB-INF/locadora/campos.jsp"); %>
 
 <table border="1">
 	<caption>
@@ -36,7 +36,7 @@
    	</tr>
    	<tr>
    		<td><label for="senha">Senha</label></td>
-   		<td><input type="text" id="senha" name="senha" size="45" required
+   		<td><input type="password" id="senha" name="senha" size="45" required
    			value="${locadora.senha}" /></td>
    	</tr>
    	<tr>
@@ -45,12 +45,18 @@
    			value="${locadora.nome}" /></td>
    	</tr>
 
-    <tr>
+	   <tr>
 		<td><label for="papel">Papel</label></td>
-		<td><input type="text" id="papel" name="papel" required value="${locadora.papel}" /></td>
+		<td>
+			<input type="radio" id="locadora" name="papel" value="Locadora" ${cliente.papel == 'Locadora' ? 'checked' : ''} required>
+			<label for="locadora">Locadora</label>
+			<br>
+			<input type="radio" id="admin" name="papel" value="Admin" ${cliente.papel == 'Admin' ? 'checked' : ''} required>
+			<label for="admin">ADMIN</label>
+		</td>
 	</tr>
-    
-   	
+
+
    	<tr>
    		<td colspan="2" align="center"><input type="submit" value="Salva" /></td>
    	</tr>

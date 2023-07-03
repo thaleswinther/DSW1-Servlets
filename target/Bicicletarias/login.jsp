@@ -39,7 +39,7 @@
             </table>
         </form>
 
-        <div align="center">
+        <!-- <div align="center">
             <table border="1">
                 <caption>Lista de Locadoras</caption>
                 <tr>
@@ -55,11 +55,17 @@
                     </tr>
                 </c:forEach>
             </table>
-        </div>
+        </div> -->
+
+        <!-- <<script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("formLista").submit();
+            });
+        </script> -->
 
         <div align="center" align="center" style="margin-top: 50px;">
-            <form method="post" action="index.jsp">
-                <label for="cidade">Filtrar por cidade:</label>
+            <form id="formLista" method="post" action="index.jsp">
+                <label for="cidade">Filtrar locadora por cidade:</label>
             <select name="cidade" id="cidade">
                 <option value="">Todas as cidades</option>
                 <c:forEach var="locadora" items="${sessionScope.listaLocadoras}">
@@ -72,7 +78,7 @@
         </div>
         <div align="center" style="margin-top: 10px;">
             <table border="1">
-                <caption>Lista de Locadoras Filtradas por Cidade</caption>
+                <caption>Lista de Locadoras por Cidade</caption>
                 <tr>
                     <th>Nome</th>
                     <th>CNPJ</th>

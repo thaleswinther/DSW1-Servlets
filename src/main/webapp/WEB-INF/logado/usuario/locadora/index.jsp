@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Livraria Virtual</title>
+        <title>Locação de Bicicletas</title>
     </head>
     <body>
         <h1>Página do Usuário</h1>
