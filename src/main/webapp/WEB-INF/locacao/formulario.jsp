@@ -13,13 +13,7 @@
 		<h1>Insira os dados para cadastrar uma nova locação</h1>
 	</div>
 	<div align="center">
-		<c:choose>
-			<c:when test="${locadoras != null}">
-				<form action="insercao" method="post">
-					<%@include file="campos.jsp"%>
-				</form>
-			</c:when>
-		</c:choose>
+	    <%@include file="campos.jsp"%>
 	</div>
 	<c:if test="${!empty requestScope.mensagens}">
 		<ul class="erro">

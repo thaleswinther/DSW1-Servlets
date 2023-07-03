@@ -112,7 +112,7 @@ public class ClienteController extends HttpServlet {
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");
             String nome = request.getParameter("nome");
-            String papel = request.getParameter("senha");
+            String papel = request.getParameter("papel");
 
             Usuario usuario = new Usuario(email, senha, nome, papel);
             daoUsuario.insert(usuario);
