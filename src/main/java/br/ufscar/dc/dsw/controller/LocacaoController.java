@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +28,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
 
 @WebServlet(urlPatterns = "/usuario/locacoes/*")
 public class LocacaoController extends HttpServlet {
@@ -173,13 +169,13 @@ public class LocacaoController extends HttpServlet {
 
         String emailCliente = cliente.getEmail();
         String assuntoCliente = "Locação realizada com sucesso";
-        String mensagemCliente = "Prezado(a) Cliente, a sua locação foi realizada com sucesso.";
+        String mensagemCliente = "Prezado(a) " + cliente.getNome() + ", a sua locação foi realizada com sucesso.";
         enviarEmail(emailCliente, assuntoCliente, mensagemCliente);
         
         // Envia e-mail para as locadoras
         String emailLocadora = locadora.getEmail();
         String assuntoLocadora = "Nova locação realizada";
-        String mensagemLocadora = "Prezadas Locadoras, uma nova locação foi realizada. Favor verificar os detalhes.";
+        String mensagemLocadora = "Prezado(a) " + locadora.getNome() + ", uma nova locação foi realizada. Favor verificar os detalhes.";
         enviarEmail(emailLocadora, assuntoLocadora, mensagemLocadora);
         
         response.sendRedirect("lista");
