@@ -23,12 +23,14 @@
                     <th>Data e hora</th>
                 </tr>
                 <c:forEach var="locacao" items="${sessionScope.listaLocacoes}">
-                    <tr>
-                        <td>${locacao.cliente.nome}</td>
-                        <td>${locacao.cliente.CPF}</td>
-                        <td>${locacao.locadora.CNPJ}</td>
-                        <td>${locacao.dataHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))}</td>
-                    </tr>
+                    <c:if test="${locacao.cliente.email eq sessionScope.usuarioLogado.email}">
+                        <tr>
+                            <td>${locacao.cliente.nome}</td>
+                            <td>${locacao.cliente.CPF}</td>
+                            <td>${locacao.locadora.CNPJ}</td>
+                            <td>${locacao.dataHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))}</td>
+                        </tr>
+                    </c:if>
                 </c:forEach>
             </table>
         </div>
