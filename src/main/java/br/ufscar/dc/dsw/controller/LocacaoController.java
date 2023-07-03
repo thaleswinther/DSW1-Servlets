@@ -13,15 +13,25 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 
 @WebServlet(urlPatterns = "/usuario/locacoes/*")
 public class LocacaoController extends HttpServlet {
@@ -100,6 +110,42 @@ public class LocacaoController extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    private void enviarEmail(String destinatario, String assunto, String mensagem) {
+        // Configurações do servidor SMTP do Gmail
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+
+        // Informações da conta de e-mail
+        final String emailRemetente = "testdsw1ufscar@gmail.com";
+        final String senhaRemetente = "wspgvoulmqwnikyk";
+
+        // Cria uma sessão com as configurações e autenticação
+        Session session = Session.getInstance(properties, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(emailRemetente, senhaRemetente);
+            }
+        });
+
+        try {
+            // Cria uma nova mensagem de e-mail
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(emailRemetente));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
+            message.setSubject(assunto);
+            message.setText(mensagem);
+
+            // Envia a mensagem
+            Transport.send(message);
+
+            System.out.println("E-mail enviado com sucesso!");
+        } catch (MessagingException e) {
+            System.out.println("Erro ao enviar o e-mail: " + e.getMessage());
+        }
+    }
+
 
     private void insere(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -124,6 +170,18 @@ public class LocacaoController extends HttpServlet {
         
         Locacao locacao = new Locacao(cliente, locadora, data_hora);
         dao.insert(locacao);
+
+        String emailCliente = cliente.getEmail();
+        String assuntoCliente = "Locação realizada com sucesso";
+        String mensagemCliente = "Prezado(a) Cliente, a sua locação foi realizada com sucesso.";
+        enviarEmail(emailCliente, assuntoCliente, mensagemCliente);
+        
+        // Envia e-mail para as locadoras
+        String emailLocadora = locadora.getEmail();
+        String assuntoLocadora = "Nova locação realizada";
+        String mensagemLocadora = "Prezadas Locadoras, uma nova locação foi realizada. Favor verificar os detalhes.";
+        enviarEmail(emailLocadora, assuntoLocadora, mensagemLocadora);
+        
         response.sendRedirect("lista");
     }
 
