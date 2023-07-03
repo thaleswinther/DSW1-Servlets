@@ -10,7 +10,7 @@ CREATE TABLE Usuario (
   email VARCHAR(100),
   senha VARCHAR(255) NOT NULL,
   nome VARCHAR(255) NOT NULL,
-  papel VARCHAR(15) NOT NULL
+  papel ENUM('Cliente', 'Locadora', 'ADMIN') NOT NULL
 );
 
 -- Tabela de clientes
@@ -59,6 +59,7 @@ INSERT INTO Cliente (id_usuario, CPF, telefone, sexo, data_nascimento) VALUES (2
 -- Inserções na tabela Locadora
 INSERT INTO Locadora (id_usuario, CNPJ, cidade) VALUES (3, '00000000000001', 'São Carlos');
 INSERT INTO Locadora (id_usuario, CNPJ, cidade) VALUES (4, '00000000000002', 'São Paulo');
+INSERT INTO Locadora (id_usuario, CNPJ, cidade) VALUES (3, '00000000000005', 'Bauru');
 
 
 -- Inserções na tabela Locacao

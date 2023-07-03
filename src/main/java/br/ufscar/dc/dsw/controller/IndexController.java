@@ -82,7 +82,6 @@ public class IndexController extends HttpServlet {
 		String cidadeSelecionada = request.getParameter("cidade"); // Obtenha o valor selecionado no select
 		byte[] bytes = cidadeSelecionada.getBytes(StandardCharsets.ISO_8859_1);
 		cidadeSelecionada = new String(bytes, StandardCharsets.UTF_8);
-		System.out.println(request.getParameter("cidade"));
 		List<Locadora> locadorasFiltradas = new ArrayList<>();
 
 		if (cidadeSelecionada == null || cidadeSelecionada.isEmpty()) {

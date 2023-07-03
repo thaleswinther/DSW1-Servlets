@@ -7,7 +7,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< HEAD
+        <title>Locação de Bicicletas</title>
+=======
         <title>Página do Cliente</title>
+>>>>>>> 1a43c6642b4fd0dd9c9469e396b32e1a134470db
     </head>
     <body>
         <h1>Página do Cliente</h1>

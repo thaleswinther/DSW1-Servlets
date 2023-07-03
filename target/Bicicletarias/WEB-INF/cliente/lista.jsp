@@ -5,11 +5,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>Livraria Virtual</title>
+<title>Locação de Bicicletas</title>
 </head>
 <body>
 
-    <% System.out.println("PASSEI POR: WEB-INF/cliente/lista.jsp"); %> 
+    <% System.out.println("PASSEI POR: WEB-INF/cliente/lista.jsp"); %>
 	<%
 		String contextPath = request.getContextPath().replace("/", "");
 	%>
@@ -30,7 +30,6 @@
 				<th>Sexo</th>
 				<th>Data de nascimento</th>
                 <th>Email</th>
-                <th>Senha</th>
                 <th>Nome</th>
                 <th>Papel</th>
                 <th>Ações</th>
@@ -42,7 +41,6 @@
 					<td>${cliente.sexo}</td>
                     <td>${cliente.dataNascimento}</td>
 					<td>${cliente.email}</td>
-					<td>${cliente.senha}</td>
                     <td>${cliente.nome}</td>
                     <td>${cliente.papel}</td>
 					<td><a href="/<%= contextPath%>/admin/clientes/edicao?id=${cliente.id}">Edição</a>

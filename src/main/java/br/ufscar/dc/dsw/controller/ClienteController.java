@@ -22,7 +22,7 @@ import java.text.ParseException;
 @WebServlet(urlPatterns = "/admin/clientes/*")
 public class ClienteController extends HttpServlet {
 
-    private static final long serialVersionUID = 1L; 
+    private static final long serialVersionUID = 1L;
     private ClienteDAO dao;
     private UsuarioDAO daoUsuario;
 
@@ -39,11 +39,11 @@ public class ClienteController extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("PASSEI POR: ClienteController");
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
-    	Erro erros = new Erro();    
+    	Erro erros = new Erro();
         if (usuario == null) {
     		response.sendRedirect(request.getContextPath());
     	} else if (usuario.getPapel().equals("ADMIN")) {
@@ -91,7 +91,7 @@ public class ClienteController extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    
+
     private void apresentaFormCadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/cliente/formulario.jsp");
         dispatcher.forward(request, response);
@@ -116,8 +116,8 @@ public class ClienteController extends HttpServlet {
 
             Usuario usuario = new Usuario(email, senha, nome, papel);
             daoUsuario.insert(usuario);
-            
-            
+
+
             String CPF = request.getParameter("CPF");
             String telefone = request.getParameter("telefone");
             String sexo = request.getParameter("sexo");
@@ -130,7 +130,7 @@ public class ClienteController extends HttpServlet {
                 e.printStackTrace(); // Lida com a exceção de análise de data inválida
             }
             usuario = daoUsuario.getbyEmail(email);
-            
+
             Cliente cliente = new Cliente(usuario.getId(), email, senha, nome, papel, CPF, telefone, sexo, data_nascimento);
             dao.insert(cliente);
             response.sendRedirect("lista");
@@ -138,20 +138,20 @@ public class ClienteController extends HttpServlet {
         } catch (RuntimeException | IOException e) {
             throw new ServletException(e);
         }
-    
+
     }
 
     private void atualize(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            
+
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");
             String nome = request.getParameter("nome");
             String papel = request.getParameter("papel");
-            Long id = Long.parseLong(request.getParameter("id")); 
+            Long id = Long.parseLong(request.getParameter("id"));
             Usuario usuario = daoUsuario.get(id);
-            
+
             usuario.setEmail(email);
             usuario.setSenha(senha);
             usuario.setNome(nome);
@@ -170,7 +170,7 @@ public class ClienteController extends HttpServlet {
             } catch (ParseException e) {
                 e.printStackTrace(); // Lida com a exceção de análise de data inválida
             }
-            
+
             Cliente cliente = dao.get(usuario.getId());
 
             cliente.setCPF(cpf);
