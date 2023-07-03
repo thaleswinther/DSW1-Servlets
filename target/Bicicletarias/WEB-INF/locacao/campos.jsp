@@ -22,16 +22,26 @@
 		</select></td>
 	</tr>
  	
-   	<tr>
-   		<td><label for="email">Email</label></td>
-   		<td><input type="email" id="email" name="email" size="45"
-   			required value="${cliente.email}" /></td>
-   	</tr>
-   	
     <tr>
-		<td><label for="data_nascimento">Data de nascimento</label></td>
-		<td><input type="date" id="data_nascimento" name="data_nascimento" required value="${cliente.dataNascimento}" /></td>
-	</tr>
+        <td><label for="data">Data</label></td>
+        <td><input type="date" id="data" name="data" required value="${locacao.dataHora.toLocalDate()}" /></td>
+    </tr>
+
+    <tr>
+        <td><label for="hora">Hora</label></td>
+        <td>
+            <select id="hora" name="hora" required>
+                <option value="">Selecione a hora</option>
+                <c:forEach begin="0" end="23" var="hour">
+                    <c:set var="formattedHour" value="${hour < 10 ? '0' + hour : hour}" />
+                    <c:set var="displayText" value="${formattedHour}:00" />
+                    <option value="${formattedHour}" ${formattedHour == locacao.dataHora.getHour() ? 'selected' : ''}>
+                        <fmt:formatNumber type="number" pattern="00" value="${formattedHour}" />:00
+                    </option>
+                </c:forEach>
+            </select>
+        </td>
+    </tr>
     
     
    	
