@@ -108,6 +108,15 @@ public class LocacaoController extends HttpServlet {
         LocalDate data = LocalDate.parse(request.getParameter("data"));
         int hora = Integer.parseInt(request.getParameter("hora"));
         LocalDateTime data_hora = LocalDateTime.of(data, LocalTime.of(hora, 0));
+        // Verificar se a data é anterior à data atual
+        if (data_hora.isBefore(LocalDateTime.now())) {
+            Erro erros = new Erro();
+            erros.add("Data da locação não pode ser anterior a data atual");
+    		request.setAttribute("mensagens", erros);
+    		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+    		rd.forward(request, response);
+            return;
+        }
         Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
         Cliente cliente = daoCliente.get(usuario.getId());
         String CNPJ = request.getParameter("locadora_selecionada"); 

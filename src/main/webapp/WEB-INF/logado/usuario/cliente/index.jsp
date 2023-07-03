@@ -2,34 +2,34 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
-<% System.out.println("PASSEI POR: WEB-INF/logado/usuario/cliente/index.jsp"); %> 
+<% System.out.println("PASSEI POR: WEB-INF/logado/usuario/cliente/index.jsp"); %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Locação de Bicicletas</title>
+    <title>Área do Cliente</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
             margin: 0;
             padding: 20px;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: flex-start;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .header {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        h1 {
+            margin-top: 0;
         }
 
         .greeting {
@@ -37,21 +37,34 @@
         }
 
         .links {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
             margin-bottom: 20px;
         }
 
         .links a {
-            display: block;
+            display: inline-block;
             margin-bottom: 10px;
             padding: 10px;
             background-color: #007bff;
             color: #fff;
             text-decoration: none;
-            width: 150px;
-            text-align: center;
+        }
+
+        .btn-logout {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff0000;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
 
         table {
+            width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
@@ -72,14 +85,20 @@
             text-align: center;
         }
 
-        .logout-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: right;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        li:last-child {
+            margin-right: 0;
         }
 
         a {
@@ -94,11 +113,9 @@
 </head>
 <body>
 <div class="container">
-    <div class="header">
-        <h1>Área do Cliente</h1>
-        <div class="greeting">
-            <p>Olá ${sessionScope.usuarioLogado.nome}</p>
-        </div>
+    <h1>Área do Cliente</h1>
+    <div class="greeting">
+        <p>Olá ${sessionScope.usuarioLogado.nome}</p>
         <div class="links">
             <a href="${pageContext.request.contextPath}/usuario/locacoes/cadastro">Cadastrar uma locação</a>
         </div>
@@ -122,7 +139,11 @@
             </c:if>
         </c:forEach>
     </table>
-    <a href="${pageContext.request.contextPath}/logout.jsp" class="logout-btn">Sair</a>
+    <ul>
+        <li>
+            <a href="${pageContext.request.contextPath}/logout.jsp" class="btn-logout">Sair</a>
+        </li>
+    </ul>
 </div>
 </body>
 </html>

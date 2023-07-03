@@ -10,7 +10,8 @@ CREATE TABLE Usuario (
   email VARCHAR(100),
   senha VARCHAR(255) NOT NULL,
   nome VARCHAR(255) NOT NULL,
-  papel ENUM('Cliente', 'Locadora', 'ADMIN') NOT NULL
+  papel ENUM('Cliente', 'Locadora', 'ADMIN') NOT NULL,
+  CONSTRAINT unique_email UNIQUE (email)
 );
 
 -- Tabela de clientes
