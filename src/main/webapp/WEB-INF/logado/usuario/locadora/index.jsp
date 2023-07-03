@@ -1,16 +1,43 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page isELIgnored="false"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< HEAD
         <title>Locação de Bicicletas</title>
+=======
+        <title>Página do Cliente</title>
+>>>>>>> 1a43c6642b4fd0dd9c9469e396b32e1a134470db
     </head>
     <body>
-        <h1>Página do Usuário</h1>
+        <h1>Página do Cliente</h1>
         <p>Olá ${sessionScope.usuarioLogado.nome}</p>
-        <a href="livros">CRUD Livros</a>
+        <a href="locacoes">Cadastrar Locação</a>
+        <div align="center">
+            <table border="1">
+                <caption>Lista de Locações</caption>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>CNPJ</th>
+                    <th>Data e hora</th>
+                </tr>
+                <c:forEach var="locacao" items="${sessionScope.listaLocacoes}">
+                    <c:if test="${locacao.cliente.email eq sessionScope.usuarioLogado.email}">
+                        <tr>
+                            <td>${locacao.cliente.nome}</td>
+                            <td>${locacao.cliente.CPF}</td>
+                            <td>${locacao.locadora.CNPJ}</td>
+                            <td>${locacao.dataHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))}</td>
+                        </tr>
+                    </c:if>
+                </c:forEach>
+            </table>
+        </div>
         <ul>
             <li>
                 <a href="${pageContext.request.contextPath}/logout.jsp">Sair</a>

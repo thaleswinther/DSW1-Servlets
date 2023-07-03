@@ -2,6 +2,7 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
+<% System.out.println("PASSEI POR: WEB-INF/logado/usuario/cliente/index.jsp"); %> 
 
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,7 @@
     <body>
         <h1>Página do Cliente</h1>
         <p>Olá ${sessionScope.usuarioLogado.nome}</p>
-        <a href="locadoras">Cadastrar Locação</a>
+		<a href="${pageContext.request.contextPath}/usuario/locacoes/cadastro">Cadastrar uma locação</a>
         <div align="center">
             <table border="1">
                 <caption>Lista de Locações</caption>

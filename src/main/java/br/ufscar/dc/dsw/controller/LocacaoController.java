@@ -46,7 +46,7 @@ public class LocacaoController extends HttpServlet {
     	Erro erros = new Erro();    
         if (usuario == null) {
     		response.sendRedirect(request.getContextPath());
-    	} else if (usuario.getPapel().equals("USER")) {
+    	} else if (usuario.getPapel().equals("Cliente")) {
             String action = request.getPathInfo();
             if (action == null) {
                 action = "";
@@ -68,7 +68,7 @@ public class LocacaoController extends HttpServlet {
             }
         } else {
             erros.add("Acesso não autorizado!");
-    		erros.add("Apenas Papel [USER] tem acesso a essa página");
+    		erros.add("Apenas Papel [Cliente] tem acesso a essa página");
     		request.setAttribute("mensagens", erros);
     		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
     		rd.forward(request, response);
@@ -79,7 +79,7 @@ public class LocacaoController extends HttpServlet {
         List<Locacao> listaLocacoes = dao.getAll();
         request.getSession().setAttribute("listaLocacoes", listaLocacoes);
         request.setAttribute("listaLocacoes", listaLocacoes);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/locacao/lista.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/logado/usuario/cliente/index.jsp");
         dispatcher.forward(request, response);
     }
 
