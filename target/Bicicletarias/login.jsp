@@ -66,16 +66,16 @@
         <div align="center" align="center" style="margin-top: 50px;">
             <form id="formLista" method="post" action="index.jsp">
                 <label for="cidade">Filtrar locadora por cidade:</label>
-            <select name="cidade" id="cidade">
-                <option value="">Todas as cidades</option>
-                <c:forEach var="locadora" items="${sessionScope.listaLocadoras}">
-                    <option value="${locadora.cidade}">${locadora.cidade}</option>
-                </c:forEach>
-            </select>
-
+                <select name="cidade" id="cidade">
+                    <option value="">Todas as cidades</option>
+                    <c:forEach var="locadora" items="${sessionScope.listaLocadoras}">
+                        <option value="${locadora.cidade}">${locadora.cidade}</option>
+                    </c:forEach>
+                </select>
                 <input type="submit" name="bFiltrar" value="Filtrar" />
             </form>
         </div>
+        
         <div align="center" style="margin-top: 10px;">
             <table border="1">
                 <caption>Lista de Locadoras por Cidade</caption>
@@ -84,13 +84,26 @@
                     <th>CNPJ</th>
                     <th>Cidade</th>
                 </tr>
-                <c:forEach var="locadoraFiltrada" items="${sessionScope.listaLocadorasFiltradas}">
-                    <tr>
-                        <td>${locadoraFiltrada.nome}</td>
-                        <td>${locadoraFiltrada.CNPJ}</td>
-                        <td>${locadoraFiltrada.cidade}</td>
-                    </tr>
-                </c:forEach>
+                <c:choose>
+                    <c:when test="${not empty sessionScope.listaLocadorasFiltradas}">
+                        <c:forEach var="locadoraFiltrada" items="${sessionScope.listaLocadorasFiltradas}">
+                            <tr>
+                                <td>${locadoraFiltrada.nome}</td>
+                                <td>${locadoraFiltrada.CNPJ}</td>
+                                <td>${locadoraFiltrada.cidade}</td>
+                            </tr>
+                        </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="locadora" items="${sessionScope.listaLocadoras}">
+                            <tr>
+                                <td>${locadora.nome}</td>
+                                <td>${locadora.CNPJ}</td>
+                                <td>${locadora.cidade}</td>
+                            </tr>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
             </table>
         </div>
     </body>
