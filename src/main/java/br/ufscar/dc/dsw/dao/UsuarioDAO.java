@@ -58,7 +58,6 @@ public class UsuarioDAO extends GenericDAO {
      public Usuario get(Long id) {
         Usuario usuario = null;   
         String sql = "SELECT * FROM Usuario WHERE id = ?";
-
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -80,10 +79,6 @@ public class UsuarioDAO extends GenericDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("CHEGUEI AQUIIIIIII"); 
-        if (usuario != null) {
-            System.out.println("usuario  não é null"); 
-        }
         return usuario;
     }
 
@@ -102,7 +97,6 @@ public class UsuarioDAO extends GenericDAO {
 
     public void update(Usuario usuario) {
         String sql = "UPDATE Usuario SET  email = ?, senha = ?, nome = ?, papel = ? WHERE id = ?";
-    
         try {
             Connection conn = this.getConnection();
             PreparedStatement statement = conn.prepareStatement(sql);

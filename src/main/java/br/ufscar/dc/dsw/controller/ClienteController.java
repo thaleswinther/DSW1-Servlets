@@ -29,7 +29,9 @@ public class ClienteController extends HttpServlet {
     @Override
     public void init() {
         dao = new ClienteDAO();
+        daoUsuario = new UsuarioDAO();
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -148,9 +150,9 @@ public class ClienteController extends HttpServlet {
             String senha = request.getParameter("senha");
             String nome = request.getParameter("nome");
             String papel = request.getParameter("papel");
-        
-            Usuario usuario = daoUsuario.get(Long.parseLong(request.getParameter("id")));
-
+            Long id = Long.parseLong(request.getParameter("id")); 
+            Usuario usuario = daoUsuario.get(id);
+            
             usuario.setEmail(email);
             usuario.setSenha(senha);
             usuario.setNome(nome);

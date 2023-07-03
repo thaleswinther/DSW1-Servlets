@@ -93,7 +93,7 @@ public class ClienteDAO  extends GenericDAO {
     }
 
     public void update(Cliente cliente) {
-        String sql = "UPDATE cliente SET CPF = ?, telefone = ?, sexo = ?, data_nascimento = ? WHERE id_usuario = ?;";
+        String sql = "UPDATE Cliente SET CPF = ?, telefone = ?, sexo = ?, data_nascimento = ? WHERE id_usuario = ?;";
 
         try {
             Connection conn = this.getConnection();
