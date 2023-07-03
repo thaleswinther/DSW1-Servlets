@@ -13,6 +13,7 @@ import java.util.Date;
 import br.ufscar.dc.dsw.domain.Cliente;
 
 
+
 public class ClienteDAO  extends GenericDAO {
     
     public void insert(Cliente cliente) {

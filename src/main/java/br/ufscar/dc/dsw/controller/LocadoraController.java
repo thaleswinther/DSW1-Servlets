@@ -108,6 +108,15 @@ public class LocadoraController extends HttpServlet {
 
         try {
             String email = request.getParameter("email");
+             // Verificar se o email já existe
+            if (daoUsuario.getbyEmail(email) != null) {
+                Erro erros = new Erro();
+                erros.add("Email já está em uso, tente novamente");
+                request.setAttribute("mensagens", erros);
+                RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+                rd.forward(request, response);
+                return;
+            }
             String senha = request.getParameter("senha");
             String nome = request.getParameter("nome");
             String papel= request.getParameter("papel");
@@ -116,6 +125,14 @@ public class LocadoraController extends HttpServlet {
             daoUsuario.insert(usuario);
             usuario = daoUsuario.getbyEmail(email);
             String cnpj = request.getParameter("CNPJ");
+            if (dao.get(cnpj) != null) {
+                Erro erros = new Erro();
+                erros.add("CNPJ já está em uso, tente novamente");
+                request.setAttribute("mensagens", erros);
+                RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+                rd.forward(request, response);
+                return;
+            }
             String cidade = request.getParameter("cidade");
             Locadora locadora = new Locadora(usuario.getId(), email, senha, nome, papel, cnpj, cidade);
             dao.insert(locadora);
