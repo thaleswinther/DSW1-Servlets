@@ -117,7 +117,7 @@ public class ClienteController extends HttpServlet {
 
             Usuario usuario = new Usuario(email, senha, nome, papel);
             daoUsuario.insert(usuario);
-
+            
             
             String CPF = request.getParameter("CPF");
             String telefone = request.getParameter("telefone");

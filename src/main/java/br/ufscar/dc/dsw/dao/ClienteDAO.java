@@ -27,8 +27,10 @@ public class ClienteDAO  extends GenericDAO {
             statement.setString(2, cliente.getCPF());
             statement.setString(3, cliente.getTelefone());
             statement.setString(4, cliente.getSexo());
-            statement.setDate(5, java.sql.Date.valueOf(cliente.getDataNascimento().toString()));
-            
+            java.util.Date dataNascimentoUtil = cliente.getDataNascimento();
+            long dataNascimentoMillis = dataNascimentoUtil.getTime();
+            java.sql.Date dataNascimentoSql = new java.sql.Date(dataNascimentoMillis);
+            statement.setDate(5, dataNascimentoSql);
             statement.executeUpdate();
 
             statement.close();

@@ -69,7 +69,7 @@ public class UsuarioDAO extends GenericDAO {
                 String senha = resultSet.getString("senha");
                 String nome = resultSet.getString("nome");
                 String papel = resultSet.getString("papel");
-        
+                System.out.println("CHEGUEI AQUI");
                 usuario = new Usuario(id, email, senha, nome, papel);
             }
 
