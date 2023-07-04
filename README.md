@@ -119,7 +119,7 @@ O sistema também trata os possíveis erros do sistema de forma amigável ao usu
 
 # Colaboradores
 * Thales Winther de Castro Moreira, aluno BCC UFSCar, github: https://github.com/thaleswinther
-* Matheus Goulart Ranzani, github: https://github.com/matheusranzani 
+* Matheus Goulart Ranzani, aluno BCC UFSCar, github: https://github.com/matheusranzani 
 * Arisa Abiko Sakaguti, aluna BCC UFSCar, github: https://github.com/arisaabiko
 * Gabriel Ripper de Mendonça Furtado, aluno BCC UFSCar, github: https://github.com/gabripper
 
