@@ -53,6 +53,7 @@ Por fim, a arquitetura de separação de arquivos utilizou o modelo MVC (Model-V
 ## Página inicial
 Está página é a login.jsp, em que é cumprido os requisitos R3 e R4, além de conter um campo de login para o usuário se autenticar como Cliente, Locadora ou Admin.
 Portanto, para atender os requisitos, a página apresenta todas as locadoras e disponibiliza um filtro para exibir apenas as locadoras de uma determinada cidade, a qual é escolhida pelo usuário.
+
 ![image](https://github.com/thaleswinther/DSW1-Servlets/assets/123703093/7f9a6d4d-1d89-404f-bc66-b683baed22a2)
 
 
