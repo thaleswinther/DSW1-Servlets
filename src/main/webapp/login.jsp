@@ -92,7 +92,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" align="center">
-                            <div style="text-align: center;">
+                            <div style="text-align: right;">
                                 <input type="submit" name="bOK" value="Entrar" />
                             </div>
                         </td>
