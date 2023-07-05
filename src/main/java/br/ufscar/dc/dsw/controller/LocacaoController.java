@@ -151,7 +151,7 @@ public class LocacaoController extends HttpServlet {
         LocalDate data = LocalDate.parse(request.getParameter("data"));
         int hora = Integer.parseInt(request.getParameter("hora"));
         LocalDateTime data_hora = LocalDateTime.of(data, LocalTime.of(hora, 0));
-        // Verificar se a locação está disponível
+        // Verificar se a hora é anterior a hora atual
         if (data_hora.isBefore(LocalDateTime.now())) {
             Erro erros = new Erro();
             erros.add("Data da locação não pode ser anterior a data atual");
@@ -166,7 +166,7 @@ public class LocacaoController extends HttpServlet {
         Locadora locadora = new LocadoraDAO().get(CNPJ);
         
         Locacao locacao = new Locacao(cliente, locadora, data_hora);
-        // Verificar se já existe uma locação na mesma data e horário
+        // Verifica se a locação está disponível
         if (!verifica_disponibilidade(locadora, cliente, data_hora)) {
             Erro erros = new Erro();
             erros.add("Não foi possível cadastrar sua locação: horário indisponível");
