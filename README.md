@@ -54,7 +54,8 @@ Por fim, a arquitetura de separação de arquivos utilizou o modelo MVC (Model-V
 Está página é a login.jsp, em que é cumprido os requisitos R3 e R4, além de conter um campo de login para o usuário se autenticar como Cliente, Locadora ou Admin.
 Portanto, para atender os requisitos, a página apresenta todas as locadoras e disponibiliza um filtro para exibir apenas as locadoras de uma determinada cidade, a qual é escolhida pelo usuário.
 
-![image](https://github.com/thaleswinther/DSW1-Servlets/assets/123703093/7f9a6d4d-1d89-404f-bc66-b683baed22a2)
+![image](https://github.com/thaleswinther/DSW1-Servlets/assets/123703093/25daedd3-7275-487e-9f6b-35102982dd6b)
+
 
 
 ## Página do Administrador
@@ -95,7 +96,9 @@ Esta é a página do usuário cliente, a qual atende os requisitos R5, R6 e R7. 
 
 ### Locadora
 Está é a página do usuário locadora, a qual atende o requisito R8. Neste página é possível visualizar todas as locações da locadora logada.
-![image](https://github.com/thaleswinther/DSW1-Servlets/assets/123703093/183967c7-31df-4a14-aa22-d45d4429ec46)
+
+![image](https://github.com/thaleswinther/DSW1-Servlets/assets/123703093/cae072ea-2194-4efc-937a-c2dcbfbeeebb)
+
 
 ## Internacionalização do sistema
 Por fim, para atender o requisito R9, o sistema também está disponível em EN-US, dependendo da configuração do navegador do usuário.
