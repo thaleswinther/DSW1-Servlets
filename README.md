@@ -46,8 +46,8 @@ Como especificado nos requisitos, o projeto foi criado utilizando as seguintes t
 • JSTL (JavaServer Pages Standard Tag Library) <br>
 • JDBC (Java Database Connectivity) <br>
 E, no ambiente de desenvolvimento: <br>
-• Maven
-• Apache Tomcat 
+• Maven <br>
+• Apache Tomcat  <br>
 Foi utilizado tais tecnologias pois o principal objtivo desse trabalho era aprender a desenvolver um ambiente web sem frameworks, a fim de entender melhor o assunto, uma vez que foi utilizado ferramentas mais complexas e detalhadas.
 Por fim, a arquitetura de separação de arquivos utilizou o modelo MVC (Model-View-Controller), o qual é em Controladores, DAOs e Domain, no contexto da aplicação.
 ## Página inicial
