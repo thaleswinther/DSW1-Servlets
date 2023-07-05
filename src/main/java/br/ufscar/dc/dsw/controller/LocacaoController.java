@@ -151,7 +151,7 @@ public class LocacaoController extends HttpServlet {
         LocalDate data = LocalDate.parse(request.getParameter("data"));
         int hora = Integer.parseInt(request.getParameter("hora"));
         LocalDateTime data_hora = LocalDateTime.of(data, LocalTime.of(hora, 0));
-        // Verificar se a data é anterior à data atual
+        // Verificar se a locação está disponível
         if (data_hora.isBefore(LocalDateTime.now())) {
             Erro erros = new Erro();
             erros.add("Data da locação não pode ser anterior a data atual");
