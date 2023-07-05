@@ -6,11 +6,11 @@
 /home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/controller/UsuarioController.java
 /home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/dao/GenericDAO.java
 /home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/controller/AdminController.java
-/home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/domain/Cliente.java
 /home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/dao/LocadoraDAO.java
-/home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/controller/IndexController.java
+/home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/domain/Cliente.java
 /home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/domain/Locacao.java
-/home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/controller/LocadoraController.java
-/home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/domain/Usuario.java
+/home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/controller/IndexController.java
 /home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/dao/LocacaoDAO.java
+/home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/domain/Usuario.java
+/home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/controller/LocadoraController.java
 /home/thales/DSW/DSW1-Servlets/src/main/java/br/ufscar/dc/dsw/controller/LocacaoController.java

@@ -99,6 +99,7 @@ public class LocacaoController extends HttpServlet {
         }
         return locadoras;
     }
+
     
     private void apresentaFormCadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("locadoras", getLocadoras());
@@ -165,6 +166,15 @@ public class LocacaoController extends HttpServlet {
         Locadora locadora = new LocadoraDAO().get(CNPJ);
         
         Locacao locacao = new Locacao(cliente, locadora, data_hora);
+        // Verificar se já existe uma locação na mesma data e horário
+        if (!verifica_disponibilidade(locadora, cliente, data_hora)) {
+            Erro erros = new Erro();
+            erros.add("Não foi possível cadastrar sua locação: horário indisponível");
+    		request.setAttribute("mensagens", erros);
+    		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+    		rd.forward(request, response);
+            return;
+        }
         dao.insert(locacao);
 
         String emailCliente = cliente.getEmail();
@@ -181,4 +191,26 @@ public class LocacaoController extends HttpServlet {
         response.sendRedirect("lista");
     }
 
+    
+    
+    public boolean verifica_disponibilidade(Locadora locadora, Cliente cliente, LocalDateTime data_hora) {
+
+        // Verificar se já existe uma locação com o mesmo cliente e horário
+        List<Locacao> listaLocacoes = dao.getAll();
+        for (Locacao locacao : listaLocacoes) {
+            if (locacao.getDataHora().equals(data_hora) && !locacao.getLocadora().equals(locadora)) {
+                return false;
+            }
+        }
+        
+        // Verificar se já existe uma locação com a mesma locadora e horário
+        for (Locacao locacao : listaLocacoes) {
+            if (locacao.getDataHora().equals(data_hora) && !locacao.getCliente().equals(cliente)) {
+                return false;
+            }
+        }
+        
+        // Caso todas as verificações passem, a locação é válida
+        return true;
+    }
 }
