@@ -190,8 +190,6 @@ public class LocacaoController extends HttpServlet {
         
         response.sendRedirect("lista");
     }
-
-    
     
     public boolean verifica_disponibilidade(Locadora locadora, Cliente cliente, LocalDateTime data_hora) {
 
